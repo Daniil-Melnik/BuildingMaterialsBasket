@@ -84,7 +84,7 @@ async function removeFromBasket(posNum, region, allProducts) {
   if (allInCategory.length === 0) {
     basket.splice(posNum, 1);
     updateTotal();
-    console.log(`Товар "${item.name}" удалён (аналогов нет)`);
+    // console.log(`Товар "${item.name}" удалён (аналогов нет)`);
     return;
   }
 
@@ -105,11 +105,11 @@ async function removeFromBasket(posNum, region, allProducts) {
       if (wantDiscount.trim().toLowerCase() === 'y') {
         basket[posNum].price = discount;
         updateTotal();
-        console.log('Обновлена цена');
+        // console.log('Обновлена цена');
       } else {
         basket.splice(posNum, 1);
         updateTotal();
-        console.log('Удалён товар');
+        // console.log('Удалён товар');
       }
     } else {
       console.log();
@@ -124,17 +124,17 @@ async function removeFromBasket(posNum, region, allProducts) {
           price: cheapestPrice
         };
         updateTotal();
-        console.log('Заменён товар');
+        // console.log('Заменён товар');
       } else {
         basket.splice(posNum, 1);
         updateTotal();
-        console.log('Удалён товар');
+        // console.log('Удалён товар');
       }
     }
   } else {
     basket.splice(posNum, 1);
     updateTotal();
-    console.log(`Товар "${item.name}" удалён`);
+    // console.log(`Товар "${item.name}" удалён`);
   }
 }
 
@@ -175,7 +175,7 @@ async function chooseProduct(productInRegion, region) {
     }
     console.clear();
     showProductSelectingPage(productInRegion, region, basket, total);
-    console.log('Некорректный id. Попробуйте снова');
+     // console.log('Некорректный id');
   }
   return chosenId;
 }
@@ -211,13 +211,12 @@ async function main() {
       region = REGIONS.get(regionID);
       productInRegion = getProductsForRegion(allProducts, region);
       if (productInRegion.length === 0) {
-        console.log('В этом регионе нет товаров');
+        // console.log('В этом регионе нет товаров');
         continue;
       }
       break;
     }
     console.clear();
-    console.log(`Некорректный индекс. Введите число от 0 до ${REGIONS.size - 1}`);
   }
 
   console.clear();
@@ -237,18 +236,18 @@ async function main() {
         const chosenId = await chooseProduct(productInRegion, region);
         const chosenProduct = productInRegion.find(p => p.id === chosenId);
         if (!chosenProduct) {
-          console.log('Товар не найден');
+          // console.log('Товар не найден');
           break;
         }
         addToBasket(chosenProduct, region);
         console.clear();
         showProductSelectingPage(productInRegion, region, basket, total);
-        console.log(`Товар "${chosenProduct.name}" добавлен`);
+        // console.log(`Товар "${chosenProduct.name}" добавлен`);
         break;
       }
       case '2': {
         if (basket.length === 0) {
-          console.log('Корзина пуста');
+          //console.log('Корзина пуста');
           break;
         }
         console.clear();
@@ -256,7 +255,7 @@ async function main() {
         const posNumInput = await ask('Введите номер товара в корзине для удаления: ');
         const posNum = Number(posNumInput.trim()) - 1;
         if (!Number.isInteger(posNum) || posNum < 0 || posNum >= basket.length) {
-          console.log('Неверный номер');
+           // console.log('Неверный номер');
           break;
         }
         await removeFromBasket(posNum, region, allProducts);
@@ -266,7 +265,7 @@ async function main() {
       }
       case '3': {
         if (basket.length === 0) {
-          console.log('Корзина пуста');
+          //console.log('Корзина пуста');
           break;
         }
         console.clear();
@@ -281,13 +280,13 @@ async function main() {
         } else if (confirmRequest.trim().toLowerCase() === 'n') {
           const confirmCancelAgain = await ask('Вы уверены, что хотите не оформлять заявку и выйти из программы? (y/n): ');
           if (confirmCancelAgain.trim().toLowerCase() === 'y') {
-            console.log('Заявка не оформлена');
+            // console.log('Заявка не оформлена');
             await exitProgram();
             isExit = true;
           } else if (confirmCancelAgain.trim().toLowerCase() === 'n') {
             console.clear();
             showProductSelectingPage(productInRegion, region, basket, total);
-            console.log('Работа с корзиной');
+            // console.log('Работа с корзиной');
           }
         }
         break;
@@ -305,13 +304,12 @@ async function main() {
               region = REGIONS.get(regionID);
               productInRegion = getProductsForRegion(allProducts, region);
               if (productInRegion.length === 0) {
-                console.log('В этом регионе нет товаров');
                 continue;
               }
               break;
             }
             console.clear();
-            console.log(`Некорректный индекс, введите число от 0 до ${REGIONS.size - 1}: `);
+            // console.log(`Некорректный индекс, введите число от 0 до ${REGIONS.size - 1}: `);
           }
           console.clear();
           showProductSelectingPage(productInRegion, region, basket, total);
@@ -329,7 +327,7 @@ async function main() {
       default:
         console.clear();
         showProductSelectingPage(productInRegion, region, basket, total);
-        console.log('Неверный выбор, попробуйте снова: ');
+        // console.log('Неверный выбор, попробуйте снова: ');
     }
   }
 }

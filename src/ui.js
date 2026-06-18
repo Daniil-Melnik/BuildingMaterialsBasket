@@ -33,11 +33,11 @@ function printProductListRegion(products, region) {
     ' '.repeat(5), 'Цена', ' '.repeat(4), '|'
     );
 
-  console.log('='.repeat(MAXLEN_POSNUM + MAXLEN_ID + MAXLEN_NAME + MAXLEN_CATEGORY + MAXLEN_PRICE + 17));
+  console.log('='.repeat(MAXLEN_POSNUM + MAXLEN_ID + MAXLEN_NAME + MAXLEN_CATEGORY + MAXLEN_PRICE + 10));
   products.forEach(p => {
     printProductInfo(p, region);
   });
-  console.log('='.repeat(MAXLEN_POSNUM + MAXLEN_ID + MAXLEN_NAME + MAXLEN_CATEGORY + MAXLEN_PRICE + 17));
+  console.log('='.repeat(MAXLEN_POSNUM + MAXLEN_ID + MAXLEN_NAME + MAXLEN_CATEGORY + MAXLEN_PRICE + 10));
 }
 
 /**
@@ -58,7 +58,7 @@ function printBasketItem(item, posNum) {
     '|', item.id, ' '.repeat(MAXLEN_ID - idLen), '|',
     item.name, ' '.repeat(MAXLEN_NAME - nameLen), '|',
     item.category, ' '.repeat(MAXLEN_CATEGORY - catLen), '|',
-    item.price, ' '.repeat(MAXLEN_PRICE - priceLen), '|'
+    item.price, ' '.repeat(MAXLEN_PRICE - priceLen - 2), '|'
   );
 }
 
@@ -122,7 +122,7 @@ function showBasketPage(basket, total) {
     ' '.repeat(3), '№', ' '.repeat(2), '|', ' '.repeat(4), 'id', ' '.repeat(3), '|',
     ' '.repeat(13), 'Наименование', ' '.repeat(14), '|',
     ' '.repeat(6), 'Категория', ' '.repeat(4), '|',
-    ' '.repeat(5), 'Цена', ' '.repeat(4), '|'
+    ' '.repeat(5), 'Цена', ' '.repeat(2), '|'
   );
   console.log('='.repeat(MAXLEN_ID + MAXLEN_NAME + MAXLEN_CATEGORY + MAXLEN_PRICE + 24));
   basket.forEach((item, posNum) => printBasketItem(item, posNum));
