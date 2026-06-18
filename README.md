@@ -39,7 +39,7 @@
   <li><a href="https://github.com/Daniil-Melnik/BuildingMaterialsBasket/blob/main/README.md#оформление-заявки">оформление заявки</a></li>
   <li><a href="https://github.com/Daniil-Melnik/BuildingMaterialsBasket/blob/main/README.md#смена-региона">смена региона</a></li>
 </ul>
-<h3>Выбор региона (1/2)</h3>
+<h3>Выбор региона</h3>
 <p>Вначале пользователю предагают выбрать регион</p>
 <img width="320" height="246" alt="image" src="https://github.com/user-attachments/assets/d3a0ef5b-bd02-462f-a67f-11046e3efcc3" />
 <p>
